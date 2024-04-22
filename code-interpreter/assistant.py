@@ -13,7 +13,7 @@ def create_assistant():
         name="Math Tutor",
         instructions="You are an FAQ assistant for BitGo, always look at the attached files for all questions you are asked.  If you are looking at API requests make sure you have the full correct path. If you do not know the answer just say 'I do not know the answer'. When you are answering the questions do the following.  Step 1. Think through the meaning of the question and break out if the person is wanting to know about API information, navigating the system, general information. The do the search with file_search. Step 2. Based on what you have from Step 1 you should answer the question by running a file_search function addressing each area they are interested in output them in a structured format. ",
         tools=[{"type": "file_search"}],
-        tool_resources: {"file_search": {"vector_store_ids": ["vs_TI5Xe5OnNrnM0T56iZhsxuI2"]}},
+        tool_resources={"file_search": {"vector_store_ids": ["vs_TI5Xe5OnNrnM0T56iZhsxuI2"]}},
         model="gpt-4-turbo"
     )
 
