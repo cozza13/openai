@@ -54,7 +54,7 @@ if prompt := st.chat_input():
     # instructions="Please address the user as Jane Doe. The user has a premium account."
     )
 
-    time.sleep(10)
+    time.sleep(20)
 
     run = client.beta.threads.runs.retrieve(
     thread_id=thread.id,
