@@ -2,7 +2,7 @@ import streamlit as st
 from openai import OpenAI
 import time
 
-st.sidebar.title('🤖 Assistant')
+st.sidebar.title('🤖 BitGo FAQ')
 avatar = {"assistant": "🤖", "user": "🐱"}
 client = OpenAI(
     api_key=st.secrets['OPEN_AI_KEY'],
@@ -19,8 +19,8 @@ def create_assistant():
 
 assistant = create_assistant()
 
-st.sidebar.write('## Assistant ID')
-st.sidebar.write(assistant.id)
+#st.sidebar.write('## Assistant ID')
+#st.sidebar.write(assistant.id)
 
 # Initialization
 if 'thread' not in st.session_state:
@@ -28,14 +28,14 @@ if 'thread' not in st.session_state:
     st.session_state.thread = thread
 
 thread = st.session_state.thread
-st.sidebar.write('## Thread ID')
-st.sidebar.write(thread.id)
+#st.sidebar.write('## Thread ID')
+#st.sidebar.write(thread.id)
 
 # if st.sidebar.button('Delete Thread'):
 #     client.beta.threads.delete(thread.id)
 
-st.sidebar.write('## Prompt example')
-st.sidebar.write("I need to solve the equation `3x + 11 = 14`. Can you help me?")
+st.sidebar.write('## What to do')
+st.sidebar.write("Ask me questions about BitGo FAQ documents?")
 
 if prompt := st.chat_input():
 
@@ -65,4 +65,4 @@ if prompt := st.chat_input():
     )
     # st.write(messages.data[::-1])
     for line in messages.data[::-1]:
-        st.chat_message(line.role,avatar=avatar[line.role]).write(line.content[0].text.value)
+        st.chat_message(line.role, avatar=avatar[line.role]).write(line.content[0]['text']['value'])
