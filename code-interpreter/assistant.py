@@ -50,8 +50,8 @@ if prompt := st.chat_input():
 
     run = client.beta.threads.runs.create(
     thread_id=thread.id,
-    assistant_id=assistant.id,
-    instructions="Please address the user as Jane Doe. The user has a premium account."
+    assistant_id=assistant.id
+    # instructions="Please address the user as Jane Doe. The user has a premium account."
     )
 
     time.sleep(10)
