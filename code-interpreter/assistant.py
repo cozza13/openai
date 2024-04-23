@@ -61,8 +61,8 @@ if prompt := st.chat_input():
             thread_id=thread.id,
             run_id=run.id
         )
-        st.write(run)
-        run_status = run["status"]  # Update run_status with the current status
+        #st.write(run)
+        run_status = run.status  # Update run_status with the current status
     messages = client.beta.threads.messages.list(
     thread_id=thread.id
     )
