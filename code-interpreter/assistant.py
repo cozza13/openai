@@ -65,4 +65,4 @@ if prompt := st.chat_input():
     )
     # st.write(messages.data[::-1])
     for line in messages.data[::-1]:
-        st.chat_message(line.role, avatar=avatar[line.role]).write(line.content[0]['text']['value'])
+        st.chat_message(line.role,avatar=avatar[line.role]).write(line.content[0].text.value)
