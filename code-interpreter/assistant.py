@@ -9,6 +9,7 @@ vector_stores = {
     # Add more stores as needed
 }
 
+
 # Sidebar UI for selecting a vector store
 selected_store_name = st.sidebar.selectbox(
     'Select a Vector Store',
@@ -35,20 +36,23 @@ def create_assistant(vector_store_id):
         model="gpt-4-turbo"
     )
 
-# Check if the vector store ID has changed or if an assistant needs to be created
+# Function to create a new thread
+def create_new_thread():
+    return client.beta.threads.create()
+
+# Check if the vector store ID has changed
 if 'selected_vector_store_id' not in st.session_state or \
-        st.session_state.selected_vector_store_id != selected_store_id or \
-        'assistant' not in st.session_state:
+        st.session_state.selected_vector_store_id != selected_store_id:
+    
+    # Create a new assistant and update the session state
     st.session_state.assistant = create_assistant(selected_store_id)
     st.session_state.selected_vector_store_id = selected_store_id
+    
+    # Create a new thread and update the session state
+    st.session_state.thread = create_new_thread()
 
+# Use the assistant and thread from the session state
 assistant = st.session_state.assistant
-
-# Initialization
-if 'thread' not in st.session_state:
-    thread = client.beta.threads.create()
-    st.session_state.thread = thread
-
 thread = st.session_state.thread
 
 st.sidebar.write('## What to do')
