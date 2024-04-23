@@ -6,7 +6,7 @@ import time
 vector_stores = {
     "Q&A Docs": "vs_TI5Xe5OnNrnM0T56iZhsxuI2",
     "API Docs": "vs_zLv5Fyne1KfIaaT3L3zyQO6z",
-    # Add more stores as needed
+    "Everything Sent" : "vs_hOHJ5iHh123rmpF9HqWbuh3z",
 }
 
 
