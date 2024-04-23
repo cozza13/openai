@@ -54,12 +54,14 @@ if prompt := st.chat_input():
     # instructions="Please address the user as Jane Doe. The user has a premium account."
     )
 
-    time.sleep(20)
-
-    run = client.beta.threads.runs.retrieve(
-    thread_id=thread.id,
-    run_id=run.id
-    )
+    run_status = "pending"
+    while run_status != "completed":
+        time.sleep(5)  # Wait for 5 seconds before checking the status again
+        run = client.beta.threads.runs.retrieve(
+            thread_id=thread.id,
+            run_id=run.id
+        )
+        run_status = run["status"]  # Update run_status with the current status
     messages = client.beta.threads.messages.list(
     thread_id=thread.id
     )
